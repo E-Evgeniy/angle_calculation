@@ -3,7 +3,7 @@ module Api
     L = 170
 
     def calculation
-      angle = find_angle(params['wing1H1'], params['wing1H2'], params['wing2H1'],params['wing2H2'])
+      angle = find_angle(params['wing1H1'], params['wing1H2'], params['wing2H1'], params['wing2H2'])
 
       render(json: {angle: angle })
     end
@@ -39,8 +39,6 @@ module Api
       sqrt1 = find_sqrt(params_wing1)
       sqrt2 = find_sqrt(params_wing2)
       alpha_rad = Math.acos(k1 / (sqrt1 * sqrt2))
-      puts("alpha_rad #{alpha_rad}")
-      puts("((alpha_rad * 180) / Math::PI).round(2) #{((alpha_rad * 180) / Math::PI).round(2)}")
       ((alpha_rad * 180) / Math::PI).round(2)
     end
 
@@ -57,7 +55,6 @@ module Api
     end
 
     def check_params(a, b, c, d)
-      puts("a.empty? #{a.empty?}")
       if a.empty? || b.empty? || c.empty? || d.empty?
         false
       else
